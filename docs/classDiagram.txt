@@ -1,0 +1,96 @@
+
+
+class MasterMind
+
+class Player
+
+class Board
+
+class KeyPeg
+
+class CodePeg
+
+class Row
+
+class SmallHole
+
+class LargeHole
+
+class CodeMaker
+
+class CodeBreaker
+
+enum CodePegColor{
+
+BLUE
+
+YELLOW
+
+GREEN
+
+PURPLE
+
+RED
+
+ORANGE
+
+}
+
+enum KeyPegColor{
+
+BLACK
+
+WHITE
+
+}
+
+class Goal
+
+class Pattern
+
+class Turn
+
+
+
+
+
+MasterMind *-down-> "1"Board
+
+MasterMind *-down->"2"Player
+
+CodeMaker .down.> KeyPeg
+
+Player --> Board
+
+Player<|-down-CodeMaker
+
+Player<|-down-CodeBreaker
+
+Board*-down- "12"Row
+
+Row*-down-"4"SmallHole
+
+Row*-down-"4"LargeHole
+
+CodePeg-down->LargeHole
+
+KeyPeg-down->SmallHole
+
+CodePeg*-down-"1"CodePegColor
+
+KeyPeg*-down-"1"KeyPegColor
+
+CodeBreaker-down->Goal
+
+CodeMaker-down->Pattern
+
+Pattern*-down->"4"CodePeg
+
+Goal-down->Pattern
+
+CodeBreaker*--> "1..12"Turn
+
+Turn ..> Pattern
+
+
+
