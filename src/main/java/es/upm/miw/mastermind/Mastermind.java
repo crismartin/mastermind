@@ -1,9 +1,36 @@
 package es.upm.miw.mastermind;
 
-public class Mastermind {
+import es.upm.miw.utils.WithConsoleModel;
+import es.upm.miw.utils.YesNoDialog;
 
-    public static void main(String[] params){
+import java.io.*;
 
-        System.err.println("hola mundo MASTERMIND");
+public class Mastermind extends WithConsoleModel {
+    Board board;
+    Players players;
+
+    private void play() {
+        this.board = new Board();
+        this.players = new Players();
+        this.writeFirstMessage();
+        do {
+            do {
+                this.players.play();
+                this.board.write();
+            } while (!this.board.isWinner());
+        } while (this.isResumedGame());
+    }
+
+    private void writeFirstMessage(){
+        Message.START_GAME.writeln();
+        Message.SEPARATOR.writeln();
+    }
+
+    public static void main(String[] args) throws IOException {
+        new Mastermind().play();
+    }
+
+    private boolean isResumedGame(){
+        return new YesNoDialog().read(Message.RESUME.toString());
     }
 }
