@@ -44,7 +44,6 @@ WHITE
 
 }
 
-class Goal
 
 class Pattern
 
@@ -66,31 +65,25 @@ Player<|-down-CodeMaker
 
 Player<|-down-CodeBreaker
 
-Board*-down- "12"Row
+Board*-down- "10"Row
 
 Row*-down-"4"SmallHole
 
 Row*-down-"4"LargeHole
 
-CodePeg-down->LargeHole
+LargeHole-down-> CodePeg
 
-KeyPeg-down->SmallHole
+SmallHole-down-> KeyPeg
 
 CodePeg*-down-"1"CodePegColor
 
 KeyPeg*-down-"1"KeyPegColor
 
-CodeBreaker-down->Goal
 
-CodeMaker-down->Pattern
+CodeMaker o-down->Pattern
 
 Pattern*-down->"4"CodePeg
 
-Goal-down->Pattern
-
-CodeBreaker*--> "1..12"Turn
+CodeBreaker*--> "1..10"Turn
 
 Turn ..> Pattern
-
-
-
