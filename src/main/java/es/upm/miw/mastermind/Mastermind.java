@@ -17,7 +17,10 @@ public class Mastermind extends WithConsoleModel {
             do {
                 this.players.play();
                 this.board.write();
-            } while (!this.board.isWinner());
+            } while (!this.board.isWinner() && (this.board.getCounterAttemps() < 10));
+            if(this.board.getCounterAttemps() == 10){
+                this.board.setCounterAttemps(0);
+            }
         } while (this.isResumedGame());
     }
 
