@@ -21,7 +21,7 @@ public class Board {
     }
 
     boolean isWinner() {
-        if (counterAttemps == numberAttemps-1) {
+        if ((counterAttemps < numberAttemps) && isAllBlacks()) {
             System.out.println("You've won!!! ;-)");
             return true;
         } else {
@@ -29,6 +29,18 @@ public class Board {
             counterAttemps++;
         }
         return false;
+    }
+
+    private boolean isAllBlacks() {
+        SmallHole[] smallHoles = this.getCurrentRow().getSmallHoles();
+        boolean bAllBlacks = true;
+        for(SmallHole current : smallHoles){
+            if(!(current.getColor() == KeyPegColor.BLACK)){
+                bAllBlacks = false;
+                break;
+            }
+        }
+        return bAllBlacks;
     }
 
     public Row getCurrentRow(){

@@ -4,8 +4,9 @@ public class LargeHole {
     private CodepegColor codepegColor;
 
     public LargeHole(){
-        super();
+        this.set(CodepegColor.NULL_TOKEN);
     }
+
     public LargeHole(CodepegColor codepegColor){
         this.set(codepegColor);
     }

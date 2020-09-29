@@ -4,7 +4,7 @@ public class SmallHole {
     private KeyPegColor keypegColor;
 
     public SmallHole(){
-        super();
+        this.set(KeyPegColor.NULL_TOKEN);
     }
 
     private SmallHole(KeyPegColor keypegColor){
