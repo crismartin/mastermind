@@ -11,7 +11,7 @@ public class Mastermind extends WithConsoleModel {
 
     private void play() {
         this.board = new Board();
-        this.players = new Players();
+        this.players = new Players(board);
         this.writeFirstMessage();
         do {
             do {

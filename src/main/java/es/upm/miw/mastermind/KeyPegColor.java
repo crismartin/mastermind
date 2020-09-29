@@ -3,8 +3,8 @@ package es.upm.miw.mastermind;
 import es.upm.miw.utils.Console;
 
 public enum KeyPegColor {
-    BLUE("blacks"),
-    YELLOW("whites"),
+    BLACK("black"),
+    WHITE("white"),
     NULL_TOKEN(" ");
 
     private String symbol;
