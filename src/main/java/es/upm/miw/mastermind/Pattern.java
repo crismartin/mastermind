@@ -1,8 +1,10 @@
 package es.upm.miw.mastermind;
 
 
+import java.util.Arrays;
+
 public class Pattern {
-    private static final int numCodepegs = 4;
+    private static final int NUM_CODEPEGS = 4;
     private CodepegColor[] codepegs;
 
     Pattern() {
@@ -10,16 +12,27 @@ public class Pattern {
     }
 
     void set() {
-        codepegs = new CodepegColor[numCodepegs];
-
-        codepegs[0] = CodepegColor.YELLOW;
-        codepegs[1] = CodepegColor.BLUE;
-        codepegs[2] = CodepegColor.RED;
-        codepegs[3] = CodepegColor.GREEN;
+        codepegs = new CodepegColor[NUM_CODEPEGS];
+        random();
     }
 
     public CodepegColor[] getCodepegs() {
         return this.codepegs;
+    }
+
+    private void random(){
+        int indexCodepeg = 0;
+        int indexFind;
+        CodepegColor color;
+
+        while(this.codepegs.length < 4){
+            color = CodepegColor.randomColor();
+            indexFind = Arrays.asList(this.codepegs).indexOf(color);
+            if(indexFind < 0 && color != CodepegColor.NULL_TOKEN){
+                this.codepegs[indexCodepeg] = color;
+                indexCodepeg++;
+            }
+        }
     }
 
     @Override

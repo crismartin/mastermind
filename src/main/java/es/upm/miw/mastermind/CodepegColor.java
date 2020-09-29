@@ -34,7 +34,7 @@ public enum CodepegColor {
         return CodepegColor.values()[position];
     }
 
-    public static CodepegColor randomCodepegColor()  {
+    public static CodepegColor randomColor()  {
         return VALUES.get(RANDOM.nextInt(SIZE));
     }
 }
