@@ -24,4 +24,12 @@ public class Row {
             this.smallHoles[i] = new SmallHole();
         }
     }
+
+    private LargeHole[] getLargeHoles(){
+        return this.largeHoles;
+    }
+
+    public SmallHole[] getSmallHoles(){
+        return this.smallHoles;
+    }
 }
