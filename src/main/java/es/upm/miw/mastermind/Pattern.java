@@ -1,9 +1,10 @@
 package es.upm.miw.mastermind;
 
+import es.upm.miw.utils.WithConsoleModel;
 
 import java.util.Arrays;
 
-public class Pattern {
+public class Pattern extends WithConsoleModel {
     private static final int NUM_CODEPEGS = 4;
     private CodepegColor[] codepegs;
 
@@ -20,19 +21,24 @@ public class Pattern {
         return this.codepegs;
     }
 
-    private void random(){
+    private void random() {
         int indexCodepeg = 0;
         int indexFind;
         CodepegColor color;
 
-        while(this.codepegs.length < 4){
+        while (indexCodepeg < NUM_CODEPEGS) {
             color = CodepegColor.randomColor();
             indexFind = Arrays.asList(this.codepegs).indexOf(color);
-            if(indexFind < 0 && color != CodepegColor.NULL_TOKEN){
+            if (indexFind < 0 && color != CodepegColor.NULL_TOKEN) {
                 this.codepegs[indexCodepeg] = color;
                 indexCodepeg++;
             }
         }
+    }
+
+    public KeyPegColor[] check(CodepegColor[] play){
+
+        return null;
     }
 
     @Override
@@ -42,5 +48,9 @@ public class Pattern {
             result.append(codepeg);
         }
         return result.toString();
+    }
+
+    protected void write() {
+        console.writeln(this.toString());
     }
 }
