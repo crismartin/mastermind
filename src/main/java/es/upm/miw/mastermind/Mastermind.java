@@ -6,16 +6,29 @@ import es.upm.miw.utils.YesNoDialog;
 import java.io.*;
 
 public class Mastermind extends WithConsoleModel {
+    private static final int NUM_PLAYERS = 2;
+    private static final int ID_CODEMAKER = 0;
+    private static final int ID_CODEBREAKER = 1;
+
     Board board;
-    Players players;
+    IPlayer[] players;
+
+    Mastermind(){
+        this.board = new Board();
+        this.players = new IPlayer[NUM_PLAYERS];
+        this.players[ID_CODEMAKER] = new PlayerCodemaker();
+        this.players[ID_CODEBREAKER] = new PlayerCodebraker();
+        for(IPlayer player: players){
+            player.setBoard(board);
+        }
+    }
 
     private void play() {
-        this.board = new Board();
-        this.players = new Players(board);
         this.writeFirstMessage();
         do {
             do {
-                this.players.play();
+                this.players[ID_CODEMAKER].play();
+                this.players[ID_CODEBREAKER].play();
                 this.board.write();
             } while (!this.board.isWinner() && (this.board.getCounterAttemps() < 10));
             if(this.board.getCounterAttemps() == 10){

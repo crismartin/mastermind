@@ -35,19 +35,34 @@ public class Board {
     }
 
     private boolean isAllBlacks() {
-        SmallHole[] smallHoles = this.getCurrentRow().getSmallHoles();
-        boolean bAllBlacks = true;
-        for (SmallHole current : smallHoles) {
-            if (!(current.getColor() == KeyPegColor.BLACK)) {
-                bAllBlacks = false;
-                break;
+        /*
+            keypegs = Row.getColorsSmallHole(currentRow());
+            return KeyPeg.isAllBlacks(keypegs);
+
+            SmallHole[] smallHoles = this.getCurrentRow().getSmallHoles();
+            boolean bAllBlacks = true;
+            for (SmallHole current : smallHoles) {
+                if (!(current.getColor() == KeyPegColor.BLACK)) {
+                    bAllBlacks = false;
+                    break;
+                }
             }
-        }
-        return bAllBlacks;
+
+            return bAllBlacks;
+        */
+        return true;
     }
 
-    public Row getCurrentRow() {
+    public Row currentRow() {
         return this.rows[counterAttemps];
+    }
+
+    public void setCurrentSmallHole(KeyPegColor[] keypegs) {
+
+    }
+
+    public CodepegColor[] getCurrentTry() {
+        return Row.getColorsLargeHole(currentRow());
     }
 
     public void setCounterAttemps(int counterAttemps) {
@@ -57,4 +72,5 @@ public class Board {
     public int getCounterAttemps() {
         return this.counterAttemps;
     }
+
 }

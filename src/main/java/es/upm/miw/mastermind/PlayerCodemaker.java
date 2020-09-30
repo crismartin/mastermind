@@ -2,31 +2,23 @@ package es.upm.miw.mastermind;
 
 import java.util.Arrays;
 
-public class PlayerCodemaker extends Player {
-
+public class PlayerCodemaker implements IPlayer {
+    private Board board;
     private Pattern pattern;
 
     public PlayerCodemaker() {
         this.pattern = new Pattern();
+        this.pattern.write(); // hay que quitarlo
     }
 
-    public void play(Board board) {
-        int indexMatch;
-        int indexSmallHole = 0;
-        LargeHole[] largeHoles = board.getCurrentRow().largeHoles;
-        SmallHole[] smallHoles = board.getCurrentRow().smallHoles;
-        CodepegColor[] codepegs = pattern.getCodepegs();
+    @Override
+    public void setBoard(Board board) {
+        this.board = board;
+    }
 
-        for(int i = 0; i < largeHoles.length; i++){
-            indexMatch = checkColor(largeHoles[i].getColor(), codepegs);
-
-            if(indexMatch == i){
-                smallHoles[indexSmallHole].set(KeyPegColor.BLACK);
-            }else if(indexMatch > -1){
-                smallHoles[indexSmallHole].set(KeyPegColor.WHITE);
-            }
-            indexSmallHole++;
-        }
+    public void play() {
+        KeyPegColor[] smallHole = pattern.check(board.getCurrentTry());
+        board.setCurrentSmallHole(smallHole);
     }
 
     private int checkColor(CodepegColor colorPlayed, CodepegColor[] codepegsPattern){
