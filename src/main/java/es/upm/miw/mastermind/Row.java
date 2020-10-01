@@ -54,7 +54,6 @@ public class Row {
     }
 
     public int countAllBlacks(){
-
         return SmallHole.countAllBlacks(this.getSmallHoles());
     }
 

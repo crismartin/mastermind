@@ -31,7 +31,7 @@ public class SmallHole {
     public static int countAllWhites(SmallHole[] smallHoles){
         int countkeyColorWhite=0;
         for (SmallHole smallhole : smallHoles) {
-            if (!smallhole.keypegColor.isBlack()) {
+            if (smallhole.keypegColor.isWhite()) {
                 countkeyColorWhite++;
             }
         }

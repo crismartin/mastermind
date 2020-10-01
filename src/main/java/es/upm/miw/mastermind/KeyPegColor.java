@@ -25,4 +25,8 @@ public enum KeyPegColor {
     boolean isBlack() {
         return this.equals(BLACK);
     }
+
+    boolean isWhite() {
+        return this.equals(WHITE);
+    }
 }
