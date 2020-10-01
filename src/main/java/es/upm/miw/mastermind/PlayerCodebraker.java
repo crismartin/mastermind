@@ -15,8 +15,7 @@ public class PlayerCodebraker implements IPlayer {
     }
 
     public void play() {
-        CodepegColor[] playAttemp = new CodepegColor[Board.numberAttemps];
-        attempt.read(playAttemp);
+        CodepegColor[] playAttemp = attempt.read();
         board.setCodepegs(playAttemp);
     }
 }

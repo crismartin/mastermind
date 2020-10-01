@@ -6,13 +6,12 @@ public class PlayerCodemaker implements IPlayer {
     private Board board;
     private Pattern pattern;
 
-
     public PlayerCodemaker() {
         reset();
         this.pattern.write(); // hay que quitarlo
     }
 
-    public void reset(){
+    public void reset() {
         this.pattern = new Pattern();
     }
 
@@ -22,16 +21,16 @@ public class PlayerCodemaker implements IPlayer {
     }
 
     public void play() {
-        int matched;
+        int indexFound;
         SmallHole[] smallHoles = board.getCurrentSmallHoles();
         LargeHole[] currentPlay = board.getCurrentPlay();
 
-        for(int i = 0; i < currentPlay.length; i++){
-            matched = pattern.check(currentPlay[i].getColor());
-            if(matched == i){
-                smallHoles[i].setColor(KeyPegColor.BLACK);
-            }else if(matched > -1){ // cambiar esto por algo más logico
-                smallHoles[i].setColor(KeyPegColor.WHITE);
+        for (int pos = 0; pos < currentPlay.length; pos++) {
+            indexFound = pattern.check(currentPlay[pos].getColor());
+            if (pattern.isInSamePosition(indexFound, pos)) {
+                smallHoles[pos].setColor(KeyPegColor.BLACK);
+            } else if (pattern.isInOtherPosition(indexFound)) {
+                smallHoles[pos].setColor(KeyPegColor.WHITE);
             }
         }
     }

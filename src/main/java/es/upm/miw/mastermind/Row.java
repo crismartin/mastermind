@@ -8,7 +8,6 @@ public class Row {
     private LargeHole[] largeHoles;
     private SmallHole[] smallHoles;
 
-
     public Row() {
         this.setLargeHoles();
         this.setSmallHoles();

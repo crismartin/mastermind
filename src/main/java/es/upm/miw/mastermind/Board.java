@@ -33,6 +33,11 @@ public class Board extends WithConsoleModel {
     }
 
     boolean isEndGame() {
+
+        console.writeln(counterAttemps + 1 + " attemp(s):");
+        console.writeln(Message.SEPARATOR.toString());
+        this.write();
+
         if (isAllBlacks()) {
             console.writeln("You've won!!! ;-)");
             return true;
@@ -41,11 +46,7 @@ public class Board extends WithConsoleModel {
             return true;
         }
 
-        console.writeln(counterAttemps + 1 + " attemp(s):");
-        console.writeln(Message.SEPARATOR.toString());
-        this.write();
         counterAttemps++;
-
         return false;
     }
 
@@ -53,32 +54,20 @@ public class Board extends WithConsoleModel {
         return getCurrentRow().isAllSmallHolesBlacks();
     }
 
-    private Row currentRow() {
+    private Row getCurrentRow() {
         return this.rows[counterAttemps];
     }
 
     public LargeHole[] getCurrentPlay() {
-        return currentRow().getLargeHoles();
-    }
-
-    public void setCounterAttemps(int counterAttemps) {
-        this.counterAttemps = counterAttemps;
-    }
-
-    public int getCounterAttemps() {
-        return this.counterAttemps;
+        return getCurrentRow().getLargeHoles();
     }
 
     public SmallHole[] getCurrentSmallHoles() {
-        return currentRow().getSmallHoles();
-    }
-
-    public Row getCurrentRow() {
-        return this.rows[counterAttemps];
+        return getCurrentRow().getSmallHoles();
     }
 
     public void setCodepegs(CodepegColor[] playAttemp) {
-        currentRow().setCodepegs(playAttemp);
+        getCurrentRow().setCodepegs(playAttemp);
     }
 
 

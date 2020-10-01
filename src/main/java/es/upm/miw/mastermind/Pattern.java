@@ -17,7 +17,6 @@ public class Pattern extends WithConsoleModel {
         random();
     }
 
-
     private void random() {
         int indexCodepeg = 0;
         int indexFind;
@@ -35,6 +34,14 @@ public class Pattern extends WithConsoleModel {
 
     public int check(CodepegColor codepegPlayed){
         return CodepegColor.cmpColor(this.codepegs, codepegPlayed);
+    }
+
+    public boolean isInSamePosition(int indexLine, int indexPattern){
+        return indexLine == indexPattern;
+    }
+
+    public boolean isInOtherPosition(int indexLine){
+        return indexLine > -1;
     }
 
     @Override
