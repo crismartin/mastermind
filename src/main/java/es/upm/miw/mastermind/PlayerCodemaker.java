@@ -8,8 +8,12 @@ public class PlayerCodemaker implements IPlayer {
 
 
     public PlayerCodemaker() {
-        this.pattern = new Pattern();
+        reset();
         this.pattern.write(); // hay que quitarlo
+    }
+
+    public void reset(){
+        this.pattern = new Pattern();
     }
 
     @Override
@@ -26,7 +30,7 @@ public class PlayerCodemaker implements IPlayer {
             matched = pattern.check(currentPlay[i].getColor());
             if(matched == i){
                 smallHoles[i].setColor(KeyPegColor.BLACK);
-            }else if(matched > -1){
+            }else if(matched > -1){ // cambiar esto por algo más logico
                 smallHoles[i].setColor(KeyPegColor.WHITE);
             }
         }

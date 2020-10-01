@@ -3,17 +3,21 @@ package es.upm.miw.mastermind;
 import es.upm.miw.utils.WithConsoleModel;
 
 public class Board extends WithConsoleModel {
-    private static final int numberAttemps = 5;
+    public static final int numberAttemps = 5;
     private int counterAttemps;
     private Row[] rows;
 
     Board() {
-        this.setRows();
-        this.counterAttemps = 0;
+        reset();
     }
 
     void write() {
         //System.out.println("Write decission from CodeMaker");
+    }
+
+    void reset() {
+        this.setRows();
+        this.counterAttemps = 0;
     }
 
     private void setRows() {
@@ -23,17 +27,19 @@ public class Board extends WithConsoleModel {
         }
     }
 
-    boolean isWinner() {
+    boolean isEndGame() {
         if (isAllBlacks()) {
             console.writeln("You've won!!! ;-)");
             return true;
-        } else if (this.counterAttemps == numberAttemps) {
+        } else if (this.counterAttemps + 1 == numberAttemps) {
             console.writeln("You've lost!!! :-(");
-        } else {
-            console.writeln(counterAttemps + 1 + " attemp(s):");
-            console.writeln(Message.SEPARATOR.toString());
-            counterAttemps++;
+            return true;
         }
+
+        console.writeln(counterAttemps + 1 + " attemp(s):");
+        console.writeln(Message.SEPARATOR.toString());
+        counterAttemps++;
+
         return false;
     }
 
@@ -69,19 +75,5 @@ public class Board extends WithConsoleModel {
         currentRow().setCodepegs(playAttemp);
     }
 
-    boolean checkAttemp(String attemp) {
-        boolean isCorrect = true;
-        assert attemp != null;
-
-        attemp = attemp.trim();
-        if (attemp.length() != Row.NUM_LARGE_HOLE) {
-            console.writeln(Message.WRONG_PROPOSED.toString());
-            isCorrect = false;
-        } else if (!CodepegColor.isValid(attemp)) {
-            console.writeln(Message.WRONG_COLORS.toString() + CodepegColor.validCodepegs());
-            isCorrect = false;
-        }
-        return isCorrect;
-    }
 
 }
