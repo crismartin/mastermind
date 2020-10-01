@@ -10,7 +10,7 @@ public enum KeyPegColor {
     private String symbol;
     private static Console console = new Console();
 
-    private KeyPegColor(String symbol){
+    private KeyPegColor(String symbol) {
         this.symbol = symbol;
     }
 
@@ -18,7 +18,11 @@ public enum KeyPegColor {
         KeyPegColor.console.write(this.symbol);
     }
 
-    static KeyPegColor get(int position){
+    static KeyPegColor get(int position) {
         return KeyPegColor.values()[position];
+    }
+
+    boolean isBlack() {
+        return this.equals(BLACK);
     }
 }

@@ -18,4 +18,5 @@ public class LargeHole {
     public void set(CodepegColor codepegColor){
         this.codepegColor = codepegColor;
     }
+
 }

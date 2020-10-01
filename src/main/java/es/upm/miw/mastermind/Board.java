@@ -1,7 +1,9 @@
 package es.upm.miw.mastermind;
 
-public class Board {
-    private static final int numberAttemps = 10;
+import es.upm.miw.utils.WithConsoleModel;
+
+public class Board extends WithConsoleModel {
+    private static final int numberAttemps = 5;
     private int counterAttemps;
     private Row[] rows;
 
@@ -11,7 +13,7 @@ public class Board {
     }
 
     void write() {
-        System.out.println("Write decission from CodeMaker");
+        //System.out.println("Write decission from CodeMaker");
     }
 
     private void setRows() {
@@ -22,47 +24,29 @@ public class Board {
     }
 
     boolean isWinner() {
-        if ((this.counterAttemps < numberAttemps) && isAllBlacks()) {
-            System.out.println("You've won!!! ;-)");
+        if (isAllBlacks()) {
+            console.writeln("You've won!!! ;-)");
             return true;
-        } else if (this.counterAttemps == 10) {
-            System.out.println("You've lost!!! :-(");
+        } else if (this.counterAttemps == numberAttemps) {
+            console.writeln("You've lost!!! :-(");
         } else {
-            System.out.println(counterAttemps + " attemp(s):");
+            console.writeln(counterAttemps + 1 + " attemp(s):");
+            console.writeln(Message.SEPARATOR.toString());
             counterAttemps++;
         }
         return false;
     }
 
     private boolean isAllBlacks() {
-        /*
-            keypegs = Row.getColorsSmallHole(currentRow());
-            return KeyPeg.isAllBlacks(keypegs);
-
-            SmallHole[] smallHoles = this.getCurrentRow().getSmallHoles();
-            boolean bAllBlacks = true;
-            for (SmallHole current : smallHoles) {
-                if (!(current.getColor() == KeyPegColor.BLACK)) {
-                    bAllBlacks = false;
-                    break;
-                }
-            }
-
-            return bAllBlacks;
-        */
-        return true;
+        return getCurrentRow().isAllSmallHolesBlacks();
     }
 
-    public Row currentRow() {
+    private Row currentRow() {
         return this.rows[counterAttemps];
     }
 
-    public void setCurrentSmallHole(KeyPegColor[] keypegs) {
-
-    }
-
-    public CodepegColor[] getCurrentTry() {
-        return Row.getColorsLargeHole(currentRow());
+    public LargeHole[] getCurrentPlay() {
+        return currentRow().getLargeHoles();
     }
 
     public void setCounterAttemps(int counterAttemps) {
@@ -71,6 +55,33 @@ public class Board {
 
     public int getCounterAttemps() {
         return this.counterAttemps;
+    }
+
+    public SmallHole[] getCurrentSmallHoles() {
+        return currentRow().getSmallHoles();
+    }
+
+    public Row getCurrentRow() {
+        return this.rows[counterAttemps];
+    }
+
+    public void setCodepegs(CodepegColor[] playAttemp) {
+        currentRow().setCodepegs(playAttemp);
+    }
+
+    boolean checkAttemp(String attemp) {
+        boolean isCorrect = true;
+        assert attemp != null;
+
+        attemp = attemp.trim();
+        if (attemp.length() != Row.NUM_LARGE_HOLE) {
+            console.writeln(Message.WRONG_PROPOSED.toString());
+            isCorrect = false;
+        } else if (!CodepegColor.isValid(attemp)) {
+            console.writeln(Message.WRONG_COLORS.toString() + CodepegColor.validCodepegs());
+            isCorrect = false;
+        }
+        return isCorrect;
     }
 
 }

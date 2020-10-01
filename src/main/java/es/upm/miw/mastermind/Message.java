@@ -9,7 +9,7 @@ public enum Message {
 	START_GAME("---------- MASTERMIND ----------"),
     SEPARATOR("****"),
 	PROPOSE_COMBINATION("Propose a combination:"),
-	WRONG_COLORS("Wrong colors, they must be:"),
+	WRONG_COLORS("Wrong colors, they must be: "),
 	WRONG_PROPOSED("Wrong proposed combination length"),
 	REPEATED_COLORS("Repeated colors"),
 	ATTEMPTS("attempt(s)"),

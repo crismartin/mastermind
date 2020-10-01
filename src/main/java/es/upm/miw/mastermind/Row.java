@@ -1,5 +1,7 @@
 package es.upm.miw.mastermind;
 
+import es.upm.miw.utils.Console;
+
 public class Row {
     public static final int NUM_SMALL_HOLE = 4;
     public static final int NUM_LARGE_HOLE = 4;
@@ -34,11 +36,14 @@ public class Row {
         return this.smallHoles;
     }
 
-    public static CodepegColor[] getColorsLargeHole(Row row) {
-        CodepegColor[] colors = new CodepegColor[NUM_SMALL_HOLE];
-        for (int i = 0; i < NUM_SMALL_HOLE; i++) {
-            colors[i] = row.largeHoles[i].getColor();
+    public void setCodepegs(CodepegColor[] codepegs) {
+        for (int i = 0; i < NUM_LARGE_HOLE; i++) {
+            this.largeHoles[i].set(codepegs[i]);
         }
-        return colors;
     }
+
+    public boolean isAllSmallHolesBlacks(){
+        return SmallHole.isAllBlacks(smallHoles);
+    }
+
 }
