@@ -4,18 +4,27 @@ public class SmallHole {
     private KeyPegColor keypegColor;
 
     public SmallHole(){
-        this.set(KeyPegColor.NULL_TOKEN);
+        this.setColor(KeyPegColor.NULL_TOKEN);
     }
 
     private SmallHole(KeyPegColor keypegColor){
-        this.set(keypegColor);
+        this.setColor(keypegColor);
     }
 
     public KeyPegColor getColor(){
         return keypegColor;
     }
 
-    public void set(KeyPegColor keypegColor){
+    public void setColor(KeyPegColor keypegColor){
         this.keypegColor = keypegColor;
+    }
+
+    public static boolean isAllBlacks(SmallHole[] smallHoles){
+        for (SmallHole smallhole : smallHoles) {
+            if (!smallhole.keypegColor.isBlack()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

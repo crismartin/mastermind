@@ -1,6 +1,8 @@
 package es.upm.miw.mastermind;
 
-public class PlayerCodebraker implements IPlayer {
+import es.upm.miw.utils.WithConsoleModel;
+
+public class PlayerCodebraker extends WithConsoleModel implements IPlayer {
     private Board board;
 
     @Override
@@ -9,17 +11,22 @@ public class PlayerCodebraker implements IPlayer {
     }
 
     public void play() {
-        System.out.println("Write a possible pattern code");
-        makePlay();
+        readAttemp();
     }
 
     void makePlay() {
-        /*
-        LargeHole[] largeHoles = this.board.getCurrentRow().largeHoles;
-        largeHoles[0].set(CodepegColor.YELLOW);
-        largeHoles[1].set(CodepegColor.ORANGE);
-        largeHoles[2].set(CodepegColor.BLUE);
-        largeHoles[3].set(CodepegColor.PURPLE);
-        */
+        CodepegColor[] playAttemp = {CodepegColor.YELLOW, CodepegColor.ORANGE, CodepegColor.BLUE, CodepegColor.PURPLE};
+        board.setCodepegs(playAttemp);
     }
+
+    void readAttemp(){
+        String attemp;
+        boolean isCorrect;
+        do{
+            console.write(Message.PROPOSE_COMBINATION.toString());
+            attemp = console.readString();
+            isCorrect = board.checkAttemp(attemp);
+        }while(!isCorrect);
+    }
+
 }

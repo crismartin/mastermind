@@ -17,9 +17,6 @@ public class Pattern extends WithConsoleModel {
         random();
     }
 
-    public CodepegColor[] getCodepegs() {
-        return this.codepegs;
-    }
 
     private void random() {
         int indexCodepeg = 0;
@@ -36,9 +33,8 @@ public class Pattern extends WithConsoleModel {
         }
     }
 
-    public KeyPegColor[] check(CodepegColor[] play){
-
-        return null;
+    public int check(CodepegColor codepegPlayed){
+        return CodepegColor.cmpColor(this.codepegs, codepegPlayed);
     }
 
     @Override
