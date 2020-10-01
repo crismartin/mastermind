@@ -46,4 +46,17 @@ public class Row {
         return SmallHole.isAllBlacks(smallHoles);
     }
 
+    public String readLargeHoles(){
+        return LargeHole.readLargeHoles(largeHoles);
+    }
+
+    public int countAllWhites(){
+        return SmallHole.countAllWhites(this.getSmallHoles());
+    }
+
+    public int countAllBlacks(){
+
+        return SmallHole.countAllBlacks(this.getSmallHoles());
+    }
+
 }

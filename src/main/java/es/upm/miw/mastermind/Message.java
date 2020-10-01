@@ -9,6 +9,7 @@ public enum Message {
 	START_GAME("---------- MASTERMIND ----------"),
     SEPARATOR("****"),
 	PROPOSE_COMBINATION("Propose a combination:"),
+	HISTORY_COMBINATION("%s--> %s blacks and %s whites"),
 	WRONG_COLORS("Wrong colors, they must be: "),
 	WRONG_PROPOSED("Wrong proposed combination length"),
 	REPEATED_COLORS("Repeated colors"),
