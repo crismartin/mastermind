@@ -1,9 +1,13 @@
 package es.upm.miw.mastermind;
 
-import es.upm.miw.utils.WithConsoleModel;
 
-public class PlayerCodebraker extends WithConsoleModel implements IPlayer {
+public class PlayerCodebraker implements IPlayer {
     private Board board;
+    private Attempt attempt;
+
+    PlayerCodebraker(){
+        this.attempt = new Attempt();
+    }
 
     @Override
     public void setBoard(Board board) {
@@ -11,22 +15,8 @@ public class PlayerCodebraker extends WithConsoleModel implements IPlayer {
     }
 
     public void play() {
-        readAttemp();
-    }
-
-    void makePlay() {
-        CodepegColor[] playAttemp = {CodepegColor.YELLOW, CodepegColor.ORANGE, CodepegColor.BLUE, CodepegColor.PURPLE};
+        CodepegColor[] playAttemp = new CodepegColor[Board.numberAttemps];
+        attempt.read(playAttemp);
         board.setCodepegs(playAttemp);
     }
-
-    void readAttemp(){
-        String attemp;
-        boolean isCorrect;
-        do{
-            console.write(Message.PROPOSE_COMBINATION.toString());
-            attemp = console.readString();
-            isCorrect = board.checkAttemp(attemp);
-        }while(!isCorrect);
-    }
-
 }
