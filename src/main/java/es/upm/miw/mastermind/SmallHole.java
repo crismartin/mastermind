@@ -27,4 +27,24 @@ public class SmallHole {
         }
         return true;
     }
+
+    public static int countAllWhites(SmallHole[] smallHoles){
+        int countkeyColorWhite=0;
+        for (SmallHole smallhole : smallHoles) {
+            if (!smallhole.keypegColor.isBlack()) {
+                countkeyColorWhite++;
+            }
+        }
+        return countkeyColorWhite;
+    }
+
+    public static int countAllBlacks(SmallHole[] smallHoles){
+        int countKeyColorBlack=0;
+        for (SmallHole smallhole : smallHoles) {
+            if (smallhole.keypegColor.isBlack()) {
+                countKeyColorBlack++;
+            }
+        }
+        return countKeyColorBlack;
+    }
 }

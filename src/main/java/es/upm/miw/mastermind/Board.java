@@ -2,6 +2,8 @@ package es.upm.miw.mastermind;
 
 import es.upm.miw.utils.WithConsoleModel;
 
+import java.util.Arrays;
+
 public class Board extends WithConsoleModel {
     public static final int numberAttemps = 5;
     private int counterAttemps;
@@ -12,7 +14,10 @@ public class Board extends WithConsoleModel {
     }
 
     void write() {
-        //System.out.println("Write decission from CodeMaker");
+        Arrays.stream(rows).limit(counterAttemps+1).forEach((row)-> {
+            this.console.write(String.format(Message.HISTORY_COMBINATION.toString(),row.readLargeHoles(), row.countAllBlacks(), row.countAllWhites()));
+            this.console.writeln();
+        });
     }
 
     void reset() {
@@ -31,6 +36,7 @@ public class Board extends WithConsoleModel {
 
         console.writeln(counterAttemps + 1 + " attemp(s):");
         console.writeln(Message.SEPARATOR.toString());
+        this.write();
 
         if (isAllBlacks()) {
             console.writeln("You've won!!! ;-)");
@@ -48,32 +54,20 @@ public class Board extends WithConsoleModel {
         return getCurrentRow().isAllSmallHolesBlacks();
     }
 
-    private Row currentRow() {
+    private Row getCurrentRow() {
         return this.rows[counterAttemps];
     }
 
     public LargeHole[] getCurrentPlay() {
-        return currentRow().getLargeHoles();
-    }
-
-    public void setCounterAttemps(int counterAttemps) {
-        this.counterAttemps = counterAttemps;
-    }
-
-    public int getCounterAttemps() {
-        return this.counterAttemps;
+        return getCurrentRow().getLargeHoles();
     }
 
     public SmallHole[] getCurrentSmallHoles() {
-        return currentRow().getSmallHoles();
-    }
-
-    public Row getCurrentRow() {
-        return this.rows[counterAttemps];
+        return getCurrentRow().getSmallHoles();
     }
 
     public void setCodepegs(CodepegColor[] playAttemp) {
-        currentRow().setCodepegs(playAttemp);
+        getCurrentRow().setCodepegs(playAttemp);
     }
 
 

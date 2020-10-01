@@ -21,6 +21,9 @@ public enum CodepegColor {
         this.symbol = symbol;
     }
 
+    public char getSymbol()  {
+        return this.symbol;
+    }
 
     public static CodepegColor randomColor() {
         return VALUES.get(RANDOM.nextInt(SIZE));

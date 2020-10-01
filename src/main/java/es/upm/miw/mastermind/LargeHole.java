@@ -19,4 +19,12 @@ public class LargeHole {
         this.codepegColor = codepegColor;
     }
 
+    public static String readLargeHoles(LargeHole[] largeHoles){
+        StringBuilder result = new StringBuilder();
+        for(LargeHole largeHole: largeHoles){
+            result.append(largeHole.getColor().getSymbol());
+        }
+        return result.toString();
+    }
+
 }

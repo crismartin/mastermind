@@ -33,7 +33,6 @@ public class Mastermind extends WithConsoleModel {
             do {
                 this.players[ID_CODEBREAKER].play();
                 this.players[ID_CODEMAKER].play();
-                this.board.write();
             } while (!this.board.isEndGame());
         } while (this.isResumedGame());
     }
