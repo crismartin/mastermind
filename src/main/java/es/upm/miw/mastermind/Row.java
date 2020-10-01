@@ -1,7 +1,5 @@
 package es.upm.miw.mastermind;
 
-import es.upm.miw.utils.Console;
-
 public class Row {
     public static final int NUM_SMALL_HOLE = 4;
     public static final int NUM_LARGE_HOLE = 4;
@@ -41,19 +39,19 @@ public class Row {
         }
     }
 
-    public boolean isAllSmallHolesBlacks(){
+    public boolean isAllSmallHolesBlacks() {
         return SmallHole.isAllBlacks(smallHoles);
     }
 
-    public String readLargeHoles(){
+    public String readLargeHoles() {
         return LargeHole.readLargeHoles(largeHoles);
     }
 
-    public int countAllWhites(){
+    public int countAllWhites() {
         return SmallHole.countAllWhites(this.getSmallHoles());
     }
 
-    public int countAllBlacks(){
+    public int countAllBlacks() {
         return SmallHole.countAllBlacks(this.getSmallHoles());
     }
 

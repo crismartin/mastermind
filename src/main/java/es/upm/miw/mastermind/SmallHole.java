@@ -3,23 +3,15 @@ package es.upm.miw.mastermind;
 public class SmallHole {
     private KeyPegColor keypegColor;
 
-    public SmallHole(){
+    public SmallHole() {
         this.setColor(KeyPegColor.NULL_TOKEN);
     }
 
-    private SmallHole(KeyPegColor keypegColor){
-        this.setColor(keypegColor);
-    }
-
-    public KeyPegColor getColor(){
-        return keypegColor;
-    }
-
-    public void setColor(KeyPegColor keypegColor){
+    public void setColor(KeyPegColor keypegColor) {
         this.keypegColor = keypegColor;
     }
 
-    public static boolean isAllBlacks(SmallHole[] smallHoles){
+    public static boolean isAllBlacks(SmallHole[] smallHoles) {
         for (SmallHole smallhole : smallHoles) {
             if (!smallhole.keypegColor.isBlack()) {
                 return false;
@@ -28,8 +20,8 @@ public class SmallHole {
         return true;
     }
 
-    public static int countAllWhites(SmallHole[] smallHoles){
-        int countkeyColorWhite=0;
+    public static int countAllWhites(SmallHole[] smallHoles) {
+        int countkeyColorWhite = 0;
         for (SmallHole smallhole : smallHoles) {
             if (smallhole.keypegColor.isWhite()) {
                 countkeyColorWhite++;
@@ -38,8 +30,8 @@ public class SmallHole {
         return countkeyColorWhite;
     }
 
-    public static int countAllBlacks(SmallHole[] smallHoles){
-        int countKeyColorBlack=0;
+    public static int countAllBlacks(SmallHole[] smallHoles) {
+        int countKeyColorBlack = 0;
         for (SmallHole smallhole : smallHoles) {
             if (smallhole.keypegColor.isBlack()) {
                 countKeyColorBlack++;

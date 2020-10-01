@@ -32,15 +32,15 @@ public class Pattern extends WithConsoleModel {
         }
     }
 
-    public int check(CodepegColor codepegPlayed){
+    public int check(CodepegColor codepegPlayed) {
         return CodepegColor.cmpColor(this.codepegs, codepegPlayed);
     }
 
-    public boolean isInSamePosition(int indexLine, int indexPattern){
+    public boolean isInSamePosition(int indexLine, int indexPattern) {
         return indexLine == indexPattern;
     }
 
-    public boolean isInOtherPosition(int indexLine){
+    public boolean isInOtherPosition(int indexLine) {
         return indexLine > -1;
     }
 
@@ -51,9 +51,5 @@ public class Pattern extends WithConsoleModel {
             result.append(codepeg);
         }
         return result.toString();
-    }
-
-    protected void write() {
-        console.writeln(this.toString());
     }
 }

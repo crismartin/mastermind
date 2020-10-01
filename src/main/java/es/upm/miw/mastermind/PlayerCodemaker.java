@@ -1,17 +1,11 @@
 package es.upm.miw.mastermind;
 
-
 public class PlayerCodemaker implements IPlayer {
 
     private Board board;
     private Pattern pattern;
 
     public PlayerCodemaker() {
-        reset();
-        this.pattern.write(); // hay que quitarlo
-    }
-
-    public void reset() {
         this.pattern = new Pattern();
     }
 

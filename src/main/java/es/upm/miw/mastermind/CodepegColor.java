@@ -21,7 +21,7 @@ public enum CodepegColor {
         this.symbol = symbol;
     }
 
-    public char getSymbol()  {
+    public char getSymbol() {
         return this.symbol;
     }
 
@@ -44,8 +44,8 @@ public enum CodepegColor {
 
     public static boolean isValid(char[] chars) {
         boolean contains;
-        for (int i = 0; i < chars.length; i++) {
-            contains = contains(chars[i]);
+        for (char aChar : chars) {
+            contains = contains(aChar);
             if (!contains) {
                 return false;
             }
@@ -77,8 +77,6 @@ public enum CodepegColor {
         }
         return codepegs;
     }
-
-
 
     public static boolean isDuplicate(char[] chars) {
         Set<CodepegColor> setCodepegs = new HashSet<>();

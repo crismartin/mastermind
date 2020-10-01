@@ -5,18 +5,17 @@ import es.upm.miw.utils.WithConsoleModel;
 public class Attempt extends WithConsoleModel {
     private boolean correct;
 
-    Attempt(){
+    Attempt() {
         this.correct = false;
     }
 
-    public CodepegColor[] read(){
+    public CodepegColor[] read() {
         String line;
-
-        do{
+        do {
             console.write(Message.PROPOSE_COMBINATION.toString());
             line = console.readString();
             check(line);
-        }while(!this.correct);
+        } while (!this.correct);
 
         return CodepegColor.getArray(line.toCharArray());
     }
@@ -30,9 +29,9 @@ public class Attempt extends WithConsoleModel {
             console.writeln(Message.WRONG_PROPOSED.toString());
         } else if (!CodepegColor.isValid(line.toCharArray())) {
             console.writeln(Message.WRONG_COLORS.toString() + CodepegColor.validCodepegs());
-        } else if(CodepegColor.isDuplicate(line.toCharArray())){
+        } else if (CodepegColor.isDuplicate(line.toCharArray())) {
             console.writeln(Message.REPEATED_COLORS.toString());
-        }else{
+        } else {
             this.correct = true;
         }
     }

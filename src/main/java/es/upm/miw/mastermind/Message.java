@@ -5,37 +5,37 @@ import es.upm.miw.utils.Console;
 
 public enum Message {
     LINE_BREAK(""),
-	EMPTY("-"),
-	START_GAME("---------- MASTERMIND ----------"),
+    EMPTY("-"),
+    START_GAME("---------- MASTERMIND ----------"),
     SEPARATOR("****"),
-	PROPOSE_COMBINATION("Propose a combination:"),
-	HISTORY_COMBINATION("%s--> %s blacks and %s whites"),
-	WRONG_COLORS("Wrong colors, they must be: "),
-	WRONG_PROPOSED("Wrong proposed combination length"),
-	REPEATED_COLORS("Repeated colors"),
-	ATTEMPTS("attempt(s)"),
-	PLAYER_WIN("You've won!!! ;-)"),
-	PLAYER_LOST("You've lost!!! :-("),
-	RESUME("Do you want to continue");
+    PROPOSE_COMBINATION("Propose a combination:"),
+    HISTORY_COMBINATION("%s--> %s blacks and %s whites"),
+    WRONG_COLORS("Wrong colors, they must be: "),
+    WRONG_PROPOSED("Wrong proposed combination length"),
+    REPEATED_COLORS("Repeated colors"),
+    ATTEMPTS("attempt(s)"),
+    PLAYER_WIN("You've won!!! ;-)"),
+    PLAYER_LOST("You've lost!!! :-("),
+    RESUME("Do you want to continue");
 
-	private String message;
-	private static Console console = new Console();
+    private String message;
+    private static Console console = new Console();
 
-	private Message(String message) {
-		this.message = message;
-	}
+    private Message(String message) {
+        this.message = message;
+    }
 
-	void write() {
-		Message.console.write(this.message);
-	}
+    void write() {
+        Message.console.write(this.message);
+    }
 
-	void writeln() {
-		Message.console.writeln(this.message);
-	}
+    void writeln() {
+        Message.console.writeln(this.message);
+    }
 
-	@Override
-	public String toString() {
-		return this.message;
-	}
-    
+    @Override
+    public String toString() {
+        return this.message;
+    }
+
 }

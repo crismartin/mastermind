@@ -5,7 +5,7 @@ public class PlayerCodebraker implements IPlayer {
     private Board board;
     private Attempt attempt;
 
-    PlayerCodebraker(){
+    PlayerCodebraker() {
         this.attempt = new Attempt();
     }
 
