@@ -3,31 +3,37 @@ package es.upm.miw.mastermind;
 import es.upm.miw.utils.WithConsoleModel;
 
 public class Attempt extends WithConsoleModel {
+    private boolean correct;
 
-    public void read(CodepegColor[] codepegs){
-        String attemp;
-        boolean isCorrect;
-        do{
-            console.write(Message.PROPOSE_COMBINATION.toString());
-            attemp = console.readString();
-            isCorrect = checkAttemp(attemp);
-        }while(!isCorrect);
-
-        CodepegColor.set(codepegs, attemp);
+    Attempt(){
+        this.correct = false;
     }
 
-    private boolean checkAttemp(String attemp) {
-        boolean isCorrect = true;
-        assert attemp != null;
+    public CodepegColor[] read(){
+        String line;
 
-        attemp = attemp.trim();
-        if (attemp.length() != Row.NUM_LARGE_HOLE) {
+        do{
+            console.write(Message.PROPOSE_COMBINATION.toString());
+            line = console.readString();
+            check(line);
+        }while(!this.correct);
+
+        return CodepegColor.getArray(line.toCharArray());
+    }
+
+    private void check(String line) {
+        assert line != null;
+
+        this.correct = false;
+        line = line.trim();
+        if (line.length() != Row.NUM_LARGE_HOLE) {
             console.writeln(Message.WRONG_PROPOSED.toString());
-            isCorrect = false;
-        } else if (!CodepegColor.isValid(attemp)) {
+        } else if (!CodepegColor.isValid(line.toCharArray())) {
             console.writeln(Message.WRONG_COLORS.toString() + CodepegColor.validCodepegs());
-            isCorrect = false;
+        } else if(CodepegColor.isDuplicate(line.toCharArray())){
+            console.writeln(Message.REPEATED_COLORS.toString());
+        }else{
+            this.correct = true;
         }
-        return isCorrect;
     }
 }

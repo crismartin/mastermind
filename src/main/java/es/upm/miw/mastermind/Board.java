@@ -28,6 +28,10 @@ public class Board extends WithConsoleModel {
     }
 
     boolean isEndGame() {
+
+        console.writeln(counterAttemps + 1 + " attemp(s):");
+        console.writeln(Message.SEPARATOR.toString());
+
         if (isAllBlacks()) {
             console.writeln("You've won!!! ;-)");
             return true;
@@ -36,10 +40,7 @@ public class Board extends WithConsoleModel {
             return true;
         }
 
-        console.writeln(counterAttemps + 1 + " attemp(s):");
-        console.writeln(Message.SEPARATOR.toString());
         counterAttemps++;
-
         return false;
     }
 

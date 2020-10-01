@@ -30,7 +30,6 @@ public class Mastermind extends WithConsoleModel {
     private void play() {
         this.writeFirstMessage();
         do {
-            this.board.reset();
             do {
                 this.players[ID_CODEBREAKER].play();
                 this.players[ID_CODEMAKER].play();
