@@ -13,11 +13,7 @@ public class Mastermind extends WithConsoleModel {
     Board board;
     IPlayer[] players;
 
-    Mastermind(){
-        this.init();
-    }
-
-    private void init(){
+    private void initGame(){
         this.board = new Board();
         this.players = new IPlayer[NUM_PLAYERS];
         this.players[ID_CODEMAKER] = new PlayerCodemaker();
@@ -30,6 +26,7 @@ public class Mastermind extends WithConsoleModel {
     private void play() {
         this.writeFirstMessage();
         do {
+            this.initGame();
             do {
                 this.players[ID_CODEBREAKER].play();
                 this.players[ID_CODEMAKER].play();
